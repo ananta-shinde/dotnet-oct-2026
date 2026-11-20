@@ -8,6 +8,7 @@ struct Course
     double price;
     int duration;
     string topic[50];
+    int topicCount = 0;
 };
 
 int main(int argc, char const *argv[])
@@ -31,11 +32,24 @@ int main(int argc, char const *argv[])
         {
             cout << "enter topic name :";
             cin >> list[courseIndex].topic[index];
+            list[courseIndex].topicCount++;
             index++;
             cout << "enter 1 to continue, 0 to exit";
             cin >> choice;
         }
         courseIndex++;
     }
+
+
+    for(int i=0;i<2;i++){
+        cout <<"Name : "<< list[i].name << "Price : " << list[i].price <<"Duration : " <<list[i].duration<<endl;
+        cout << "topics :" <<endl;
+        for(int j=0;j<list[i].topicCount;j++){
+            cout<<list[i].topic[j]<<endl;
+        }
+    }
+
+
+
     return 0;
 }
