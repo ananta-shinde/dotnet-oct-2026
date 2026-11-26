@@ -22,12 +22,6 @@ struct Student
 };
 
 
-
-
-
-
-
-
 int main(int argc, char const *argv[])
 {
     Student studList[10];
@@ -35,6 +29,7 @@ int main(int argc, char const *argv[])
 
     // add new student
     // 1. accept details and put it into structure
+    studList[studentCount].rollno = studentCount+1;
     cout << "enter student name :";
     cin >> studList[studentCount].name;
     cout << "enter student email :";
@@ -58,8 +53,58 @@ int main(int argc, char const *argv[])
     cout<< "enter marks for Maths:";
     cin >> studList[studentCount].maths;
     studentCount++;
+    cout << "student created successfully"<< endl;
 
 
-    
+    //update a student
+    int roll;
+    string key;
+    string value;
+    cout << "updating student : ";
+    cout <<"enter roll no :";
+    cin >> roll;
+    cout << "which property";
+    cin >> key;
+    cout << "enter new value for property";
+    cin >> value;
+
+    for(int i=0;i<studentCount;i++){
+        if(studList[i].rollno == roll)
+        {
+            if(key == "name"){
+                 studList[i].name = value;
+            }
+            if(key == "email"){
+                studList[i].email = value;
+            }
+            if(key == "password"){
+                studList[i].password = value;
+            } 
+        }
+    }
+
+    cout << "student updated successfully"<< endl;
+
+
+
+    //print list of studnets
+    for(int i=0;i<studentCount;i++){
+        cout<< "name: "<< studList[i].name << " email :"<<studList[i].email << " password :"<<studList[i].password<<endl;
+    }
+
+     //print details of studnet by roll no
+    cout <<"enter roll no :";
+    cin >> roll;
+    for(int i=0;i<studentCount;i++){
+        if(studList[i].rollno == roll){
+         cout<< "name: "<< studList[i].name << " email :"<<studList[i].email << " password :"<<studList[i].password<<endl;
+        }
+    }
+
+
+
+
+
+
     return 0;
 }
